@@ -23,15 +23,16 @@ export default function AssociationsCardsText() {
 
     return (
         <>
-            <div className="flex flex-col content-center border-solid border-gray-4 00 leading-9 " >
+            <div className="flex flex-col content-center leading-9 gap-3 " >
                 {associationsData && associationsData.map((association) => (
-                    <div key={association.id}>
+                    <div key={association.id} className="border-2 p-2 border-(--border-color) rounded-lg">
                         <h3 className="flex font-bold justify-center" >
                             {association.image} {association.title}
                         </h3>
-                        <p className="flex justify-center">
+                        <p className="flex justify-center line-1 leading-5">
                             {association.description}
                         </p>
+                        <hr className="m-4 border-(--border-color) border-1" ></hr>
                         <AssociationsCardsButton/>
                     </div>
                 ))}

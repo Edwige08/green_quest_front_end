@@ -5,7 +5,7 @@ export default function AssociationsCards () {
     return (
         <>
        
-        <div className="flex border-solid flex-col mt-4	">
+        <div className="flex items-center border-solid flex-col mt-4 w-70 m-auto ">
             <AssociationsCardsText/>
         </div>
 
