@@ -31,10 +31,10 @@ export default function VolunteerForm() {
         <>
             <form>
                 <InputLabel name="Prénom" dataName="firstname" placeholder="votre prénom" onChange={handleChange} />
-                <InputLabel name="Nom" placeholder="Votre nom" onChange={handleChange} />
-                <InputLabel name="pseudo" placeholder="votre pseudo" onChange={handleChange} />
-                <InputLabel name="Email" placeholder="Votre email" onChange={handleChange} />
-                <InputLabel name="Mot de passe" placeholder="Votre mot de passe" onChange={handleChange} />
+                <InputLabel name="Nom" dataName="lastname" placeholder="Votre nom" onChange={handleChange} />
+                <InputLabel name="pseudo" dataName="username" placeholder="votre pseudo" onChange={handleChange} />
+                <InputLabel name="Email" dataName="email" placeholder="Votre email" onChange={handleChange} />
+                <InputLabel name="Mot de passe" dataName="password" placeholder="Votre mot de passe" onChange={handleChange} />
                 <InputCity onSelect={handleVilleSelect}></InputCity>
             </form>
         </>
