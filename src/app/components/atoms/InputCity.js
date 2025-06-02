@@ -54,10 +54,10 @@ export default function InputCity({onSelect}) {
                     setSelectedCity("")
                 }}
                 placeholder="Entrez une ville..."
-                className="border p-2 w-9/10"
+                className=" p-2 w-9/10"
             />
             {villes.length > 0 && (
-                <ul className="absolute bg-white rounded-md border w-9/10 z-10 ">
+                <ul className="absolute bg-white rounded-md  w-9/10 z-10 ">
                     {villes.map(ville => (
                         <li
                             key={ville.code}
