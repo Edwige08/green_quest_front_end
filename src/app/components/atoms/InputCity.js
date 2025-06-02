@@ -34,7 +34,7 @@ export default function InputCity({onSelect}) {
         setSelectedCity(city.nom);
         onSelect({
             name: city.nom,
-            code: city.code,
+            zipcode: city.code,
             lat: city.centre?.coordinates[1] || [],
             lng: city.centre?.coordinates[0] || [] 
         })

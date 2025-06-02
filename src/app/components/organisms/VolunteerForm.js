@@ -15,7 +15,7 @@ export default function VolunteerForm() {
     })
     const handleVilleSelect = (data) => {
         console.log('Ville sélectionnée :', data);
-        setVilleData(data); // { nom, code, lat, lng }
+        setVilleData(data);
     };
     const handleChange = (value, name) => {
 
