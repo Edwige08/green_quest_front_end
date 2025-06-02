@@ -29,7 +29,7 @@ export default function VolunteerForm() {
 
     return (
         <>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <InputLabel name="Prénom" dataName="firstname" placeholder="votre prénom" onChange={handleChange} />
                 <InputLabel name="Nom" dataName="lastname" placeholder="Votre nom" onChange={handleChange} />
                 <InputLabel name="pseudo" dataName="username" placeholder="votre pseudo" onChange={handleChange} />
