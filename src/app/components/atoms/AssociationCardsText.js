@@ -23,7 +23,8 @@ export default function AssociationsCardsText() {
 
     return (
         <>
-            <div className="flex flex-col content-center leading-9 gap-3 " >
+        
+            <div className="flex flex-col content-center leading-9 gap-3 w-100" >
                 {associationsData && associationsData.map((association) => (
                     <div key={association.id} className="border-2 p-2 border-(--border-color) rounded-lg">
                         <h3 className="flex font-bold justify-center" >
@@ -36,7 +37,6 @@ export default function AssociationsCardsText() {
                         <AssociationsCardsButton/>
                     </div>
                 ))}
-                <hr></hr>
             </div>
         </>
     )
