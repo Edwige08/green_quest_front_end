@@ -43,9 +43,11 @@ export default function InputCity({onSelect}) {
     };
 
     return (
-        <div className="relative ">
+        <div className="relative flex-col flex">
+            <label htmlFor='city'>Ville</label>
             <input
                 type="text"
+                name='city'
                 value={selectedCity || query}
                 onChange={e => {
                     setQuery(e.target.value)
