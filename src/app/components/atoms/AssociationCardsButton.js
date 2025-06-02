@@ -1,9 +1,24 @@
-import { Heart } from "lucide-react"
+'use client'
 
-export default function AssociationsCardsButton () {
+import { Heart } from "lucide-react"
+import AssociationsCardsModale from "./AssociationsCardsModale"
+import { useState } from "react"
+
+export default function AssociationsCardsButton() {
+
+    const [showModal, setShowModal] = useState(false)
+
     return (
         <>
-            <button className="flex content-center items-center gap-3 m-auto cursor-pointer bg-emerald-600 hover:bg-blue-700 text-white font-bold py-2 px-7 rounded w-fit " ><Heart /> Faire un don</button>
+            <button
+                onClick={() => setShowModal(true)}
+                className="flex content-center items-center gap-3 m-auto cursor-pointer bg-emerald-600 hover:bg-blue-700 text-white font-bold py-2 px-7 rounded w-fit ">
+                <Heart /> Faire un don
+            </button>
+
+            {showModal && (
+                <AssociationsCardsModale onClose={() => setShowModal(false)} />
+            )}
         </>
     )
 }
