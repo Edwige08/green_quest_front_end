@@ -7,11 +7,11 @@ import InputLabel from "../atoms/InputLabel";
 export default function VolunteerForm() {
     const [villeData, setVilleData] = useState(null);
     const [dataForm, setDataForm] = useState({
-        firstname: "",
-        lastname: "",
-        username: "",
-        email: "",
-        password: ""
+        // firstname: "",
+        // lastname: "",
+        // username: "",
+        // email: "",
+        // password: ""
     })
     const handleVilleSelect = (data) => {
         console.log('Ville sélectionnée :', data);
@@ -29,13 +29,14 @@ export default function VolunteerForm() {
 
     const final = {
         ...dataForm,
-        city : {...villeData}
+        ...villeData
     }
     console.log(final)
 
     return (
-        <>
-            <form>
+        <div className="flex flex-col items-center ">
+            <h2>Mon profil</h2>
+            <form className=" rounded-sm w-9/10 p-3">
                 <InputLabel name="Prénom" type="text" dataName="firstname" placeholder="votre prénom" onChange={handleChange} />
                 <InputLabel name="Nom" type="text" dataName="lastname" placeholder="Votre nom" onChange={handleChange} />
                 <InputLabel name="pseudo" type="text" dataName="username" placeholder="votre pseudo" onChange={handleChange} />
@@ -43,7 +44,7 @@ export default function VolunteerForm() {
                 <InputLabel name="Mot de passe" type="password" dataName="password" placeholder="Votre mot de passe" onChange={handleChange} />
                 <InputCity onSelect={handleVilleSelect}></InputCity>
             </form>
-        </>
+        </div>
     )
 
 }

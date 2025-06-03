@@ -33,7 +33,7 @@ export default function InputCity({onSelect}) {
     const handleSelect = (city) => {
         setSelectedCity(city.nom);
         onSelect({
-            name: city.nom,
+            city: city.nom,
             zipcode: city.code,
             lat: city.centre?.coordinates[1] || [],
             lng: city.centre?.coordinates[0] || [] 
@@ -57,7 +57,7 @@ export default function InputCity({onSelect}) {
                 className=" p-2 w-9/10"
             />
             {villes.length > 0 && (
-                <ul className="absolute bg-white rounded-md  w-9/10 z-10 ">
+                <ul className=" bg-white rounded-md  w-9/10 z-10 ">
                     {villes.map(ville => (
                         <li
                             key={ville.code}
