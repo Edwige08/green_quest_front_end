@@ -1,7 +1,13 @@
-const LoginForm = require("../components/organisms/LoginForm")
+'use client';
 
-export default function Login (props) {
+import LoginForm from "../components/organisms/LoginForm";
 
-    <LoginForm/>
+export default function Login () {
+
+    return (
+
+        <LoginForm />
+
+    )
 
 }
