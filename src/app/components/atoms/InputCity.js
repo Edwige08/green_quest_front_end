@@ -33,7 +33,7 @@ export default function InputCity({onSelect}) {
     const handleSelect = (city) => {
         setSelectedCity(city.nom);
         onSelect({
-            city: city.nom,
+            title: city.nom,
             zipcode: city.code,
             lat: city.centre?.coordinates[1] || [],
             lng: city.centre?.coordinates[0] || [] 
