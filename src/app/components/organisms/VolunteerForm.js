@@ -6,27 +6,31 @@ import InputLabel from "../atoms/InputLabel";
 import ButtonForm from "../atoms/ButtonForm";
 import { LogOut, Save } from "lucide-react";
 import Button from "../atoms/Button";
+import { useRouter } from "next/navigation";
 
 export default function VolunteerForm() {
     const [villeData, setVilleData] = useState(null);
     const [dataForm, setDataForm] = useState({});
-    const [errorMessage, setErrorMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState("");
+    const router = useRouter();
+
     const handleVilleSelect = (data) => {
         console.log('Ville sélectionnée :', data);
         setVilleData(data);
     };
+
     const handleChange = (value, name) => {
 
         setDataForm(prev => ({
             ...prev,
             [name]: value
         }));
-
-
     }
 
     const handleClick = () => {
-
+        localStorage.removeItem('currentUserId');
+        localStorage.removeItem('currentUserName');
+        router.push('/login')
     }
 
     const handleSubmit = async (e) => {
