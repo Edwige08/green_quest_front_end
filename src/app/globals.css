@@ -2,6 +2,7 @@
 
 :root {
   --background: #ffffff;
+  --background-color: #f9fafb;
   --foreground: #171717;
   --primary-color: #059669;
   --primary-color-hover: #047857;
@@ -11,6 +12,12 @@
   --text-secondary: #6b7280;
   --border-color: #e5e7eb;
   --hover-color: #f3f4f6;
+  --wasteCigarette: #fbbf24;
+  --wastePlastic: #60a5fa;
+  --wasteGlass: #34d399;
+  --wasteMetal: #94a3b8;
+  --wasteElectronics: #a78bfa;
+  --wasteOthers: #f87171;
 }
 
 @theme inline {
