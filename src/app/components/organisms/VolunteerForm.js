@@ -35,8 +35,9 @@ export default function VolunteerForm() {
             ...dataForm,
             ...(villeData && { city: { ...villeData } })
         }
-        const userId = 17;
-        const response = await fetch("http://localhost:5001/volunteers/17", {
+        const userId = localStorage.getItem('currentUserId');
+
+        const response = await fetch(`http://localhost:5001/volunteers/${userId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,11 +47,11 @@ export default function VolunteerForm() {
         const result = await response.text();
         if (response.status == 401) {
             setErrorMessage(result)
-            setDataForm({});
         } else {
             setErrorMessage("")
-            setDataForm({})
         }
+        setDataForm({})
+        setVilleData(null)
         console.log(dataForm)
 
     }
