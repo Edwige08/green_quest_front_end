@@ -6,7 +6,9 @@ export default function Volunteers({children}) {
     return (
         <>
             <Navbar items = {items} />
+            <div className="p-2 bg-(--background-color)">
             {children}
+            </div>
         </>
     );
 }
