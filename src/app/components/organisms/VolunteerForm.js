@@ -35,6 +35,7 @@ export default function VolunteerForm() {
             ...dataForm,
             ...(villeData && { city: { ...villeData } })
         }
+        const userId = 17;
         const response = await fetch("http://localhost:5001/volunteers/17", {
             method: 'PATCH',
             headers: {
@@ -50,6 +51,7 @@ export default function VolunteerForm() {
             setErrorMessage("")
             setDataForm({})
         }
+        console.log(dataForm)
 
     }
 

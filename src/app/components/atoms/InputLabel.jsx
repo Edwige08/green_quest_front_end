@@ -7,7 +7,7 @@ export default function InputLabel ({ name, dataName, placeholder, onChange, typ
             type={type}
             name={name}
             onChange={(e) => onChange(e.target.value, dataName)}
-            value={value || ""}
+            {...(value !== undefined ? { value } : {})}
             placeholder={placeholder}
         />
 
