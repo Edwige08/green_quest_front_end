@@ -65,9 +65,9 @@ export default function VolunteerForm() {
         <div className="flex flex-col items-center  ">
             <h2>Mon profil</h2>
             <form className=" flex flex-col rounded-sm w-9/10 p-3 gap-3" onSubmit={handleSubmit}>
-                <InputLabel name="Prénom" type="text" dataName="firstname" placeholder="votre prénom" value={dataForm.firstname || ""} onChange={handleChange} />
+                <InputLabel name="Prénom" type="text" dataName="firstname" placeholder="Votre prénom" value={dataForm.firstname || ""} onChange={handleChange} />
                 <InputLabel name="Nom" type="text" dataName="lastname" placeholder="Votre nom" value={dataForm.lastname || ""} onChange={handleChange} />
-                <InputLabel name="pseudo" type="text" dataName="username" placeholder="votre pseudo" value={dataForm.username || ""} onChange={handleChange} />
+                <InputLabel name="Pseudo" type="text" dataName="username" placeholder="Votre pseudo" value={dataForm.username || ""} onChange={handleChange} />
                 <InputLabel name="Email" type="text" dataName="email" placeholder="Votre email" value={dataForm.email || ""} onChange={handleChange} />
                 <InputLabel name="Mot de passe" type="password" dataName="password" placeholder="Votre mot de passe" value={dataForm.password || ""} onChange={handleChange} />
                 <InputCity onSelect={handleVilleSelect}></InputCity>
