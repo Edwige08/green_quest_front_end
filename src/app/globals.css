@@ -18,6 +18,9 @@
   --wasteMetal: #94a3b8;
   --wasteElectronics: #a78bfa;
   --wasteOthers: #f87171;
+  --buttonRed-background: #fee2e2;
+  --buttonBlue-background: #dbeafe;
+  --buttonGreen-background: #e2feea;
 }
 
 @theme inline {
