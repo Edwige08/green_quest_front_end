@@ -2,7 +2,7 @@
 
 import InputLabel from "../atoms/InputLabel";
 import ButtonForm from "../atoms/ButtonForm";
-import ErrorMessage from "../atoms/errorMessage";
+import ErrorMessage from "../atoms/ErrorMessage";
 
 import { useState, useEffect } from "react";
 import  { LogIn } from "lucide-react";
