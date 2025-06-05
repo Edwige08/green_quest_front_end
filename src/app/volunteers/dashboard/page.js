@@ -5,83 +5,73 @@ import { useEffect, useState } from "react";
 
 export default function Dashboard() {
 
-    const [wastedata, setWastedata] = useState([])
-    const [displayedMonth, setDisplayedMonth] = useState(0)
+    const profileFirstName = "Phoebe";    // /!\ A RECUPERER SELON PROFIL CONNECTE
+    const profileId = 1;                  // /!\ A RECUPERER SELON PROFIL CONNECTE
 
+    const options = { month: "long" };                                              // Sert à l'affichage du mois en lettres
+    const [currentDate, setCurrentDate] = useState(new Date());                     // Date au format long
+    const [wastedata, setWastedata] = useState([]);
+    const [amountWastesByMonth, setAmountWastesByMonth] = useState([]);
+    const [displayedMonth, setDisplayedMonth] = useState(currentDate.getMonth());   // Numéro du mois
+    const [displayedYear, setDisplayedYear] = useState(currentDate.getFullYear());  // Numéro de l'année
+
+    // Fonction qui retourne le mois en lettres : 
+    function getCurrentMonthinLetter (myDate) {
+        return new Intl.DateTimeFormat("fr-FR", options).format(myDate)
+    }
+
+    // Fonction de récupération de la liste des déchets : 
     async function fetchWastes() {
         const promise = await fetch('http://localhost:5001/wastes');
         const data = await promise.json();
-        setWastedata(data)
+        setWastedata(data);
+    }
+    
+    // Fonction de récupération des déchets ramassés selon le mois et l'user :
+    async function fetchAmountWastesByMonth(userId) {
+        let dateForRequest = displayedMonth < 9 ? `${displayedYear}-0${displayedMonth + 1}-01` : `${displayedYear}-${displayedMonth + 1}-01`;     // Attention, mois = 6 et non 06 !!! donc chemin ne marche pas
+        const promise = await fetch(`http://localhost:5001/collections/${userId}/${dateForRequest}`);
+        const data = await promise.json();
+        setAmountWastesByMonth(data);
     }
 
     function nextMonth() {
-        // let newMonth = displayedMonth + 1;
-        setDisplayedMonth(displayedMonth + 1)
+        if (displayedMonth === 11) {
+            currentDate.setMonth(0)
+            setDisplayedMonth(0)
+            setDisplayedYear(displayedYear + 1)
+            console.log("FCT NEXMONTH 11")
+        } else {
+            currentDate.setMonth(displayedMonth + 1)
+            setDisplayedMonth(displayedMonth + 1)
+            console.log("FCT NEXMONTH <11")
+        }
     }
 
     function lastMonth() {
-        // let newMonth = displayedMonth - 1;
-        setDisplayedMonth(displayedMonth - 1)
+        if (displayedMonth === 0) {
+            currentDate.setMonth(11)
+            setDisplayedMonth(11)
+            setDisplayedYear(displayedYear - 1)
+            console.log("FCT LASTMONTH 0")
+        } else {
+            currentDate.setMonth(displayedMonth - 1)
+            setDisplayedMonth(displayedMonth - 1)
+            console.log("FCT LASTMONTH >0")
+        }
     }
 
     useEffect(() => {
         fetchWastes()
     }, [])
-
     useEffect(() => {
-    }, [wastedata])
+        fetchAmountWastesByMonth(profileId)
+    }, [])
+    useEffect(() => {
+        fetchAmountWastesByMonth(profileId)
+          console.log("🍓 displayedMonth : " + displayedMonth);
+    }, [displayedMonth])
 
-
-    // TODO : fetch nombre de collectes
-    // TODO : Afficher nombre de collectes en fonction du mois
-    // TODO : Récupérer le nom de la personne connectée à la place de "Phoebe"
-    // REFACTO : Simplifier affichage du mois et de l'année.
-
-    const profileFirstName = "Phoebe";
-    const todayDate = new Date();
-    const todayDateString = todayDate.toLocaleDateString();
-    const thisYear = todayDateString.substring(6);
-    let thisMonth = todayDateString.substring(3, 5);
-    setDisplayedMonth(thisMonth);
-    let letterMonth = ""
-    switch (thisMonth) {
-        case "01":
-            letterMonth = "Janvier";
-            break;
-        case "02":
-            letterMonth = "Février";
-            break;
-        case "03":
-            letterMonth = "Mars";
-            break;
-        case "04":
-            letterMonth = "Avril";
-            break;
-        case "05":
-            letterMonth = "Mai";
-            break;
-        case "06":
-            letterMonth = "Juin";
-            break;
-        case "07":
-            letterMonth = "Juillet";
-            break;
-        case "08":
-            letterMonth = "Août";
-            break;
-        case "09":
-            letterMonth = "Septembre";
-            break;
-        case "10":
-            letterMonth = "Octobre";
-            break;
-        case "11":
-            letterMonth = "Novembre";
-            break;
-        case "12":
-            letterMonth = "Décembre";
-            break;
-    }
     return (
         <div className="flex flex-col items-center m-auto max-w-[28rem] bg-[white] border-(--border-color) border-0 rounded-lg shadow-lg">
             <div className="flex flex-col gap-2 m-4">
@@ -90,7 +80,7 @@ export default function Dashboard() {
                     <button onClick={lastMonth} className="rounded-full p-1 hover:bg-(--border-color)">
                         <Icons.ChevronLeft />
                     </button>
-                    <p className="flex w-[15rem] items-center justify-center">{letterMonth + " " + thisYear}</p>
+                    <p className="flex w-[15rem] items-center justify-center">{getCurrentMonthinLetter(currentDate) + " " + displayedYear}</p>
                     <button onClick={nextMonth} className="rounded-full p-1 hover:bg-(--border-color)">
                         <Icons.ChevronRight />
                     </button>
@@ -100,17 +90,15 @@ export default function Dashboard() {
                 {wastedata && wastedata.map((waste, index) => {
                     const Icon = Icons[waste.logo_lucide];
                     return (
-                        <div className="flex flex-row border-1 border-(--border-color) m-2 p-2 w-[26rem] rounded-lg hover:shadow-lg hover:translate-y-[-3px] duration-[0.2s] ease-in-out">
+                        <div key={index} className="flex flex-row border-1 border-(--border-color) m-2 p-2 w-[26rem] rounded-lg hover:shadow-lg hover:translate-y-[-3px] duration-[0.2s] ease-in-out">
                             <div className="flex justify-center items-center">
-                                <p
-                                    className="flex justify-center items-center p-2 m-2 rounded-lg size-[45px] bg-(--wasteOthers) text-white"
-                                    key={index} >
+                                <p className="flex justify-center items-center p-2 m-2 rounded-lg size-[45px] bg-(--wasteOthers) text-white">
                                     <Icon />
                                 </p>
                             </div>
                             <div className="flex flex-col p-2">
                                 <p key={index} >{waste.label.substring(2)}</p>
-                                <p className="text-(--text-secondary)">Nombre de collectes</p>
+                                <p className="text-(--text-secondary)">{amountWastesByMonth[index]?.sum ? amountWastesByMonth[index].sum : 0} {amountWastesByMonth[index]?.sum > 1 ? 'collectés' : 'collecté'}</p>
                             </div>
                         </div>
                     )
