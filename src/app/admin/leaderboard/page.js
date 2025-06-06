@@ -8,7 +8,7 @@ export default function Leaderboard() {
     return (
         <>
             <main>
-                <div className="flex flex-col items-center m-auto max-w-[28rem] bg-[white] border-(--border-color) border-0 rounded-lg shadow-lg">
+                <div className="flex flex-col items-center m-auto max-w-[28rem] border-(--border-color) border-0 rounded-lg shadow-lg">
 
                     <p className="text-center font-bold text-lg flex gap-1"> <Trophy /> Leaderboard global</p>
 
