@@ -1,18 +1,25 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputCity from "../atoms/InputCity";
 import InputLabel from "../atoms/InputLabel";
-import ButtonForm from "../atoms/ButtonForm";
-import { LogOut, Save } from "lucide-react";
-import Button from "../atoms/Button";
-import { useRouter } from "next/navigation";
 
-export default function VolunteerForm() {
+export default function VolunteerForm({children, user, title, classes}) {
     const [villeData, setVilleData] = useState(null);
     const [dataForm, setDataForm] = useState({});
     const [errorMessage, setErrorMessage] = useState("");
-    const router = useRouter();
+
+    useEffect(() => {
+        if (user) {
+            setDataForm({
+                firstname: user.firstname,
+                lastname: user.lastname,
+                username: user.username,
+                email: user.email
+            })
+        }
+
+    }, [])
 
     const handleVilleSelect = (data) => {
         console.log('Ville sélectionnée :', data);
@@ -27,19 +34,13 @@ export default function VolunteerForm() {
         }));
     }
 
-    const handleClick = () => {
-        localStorage.removeItem('currentUserId');
-        localStorage.removeItem('currentUserName');
-        router.push('/login')
-    }
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         const final = {
             ...dataForm,
             ...(villeData && { city: { ...villeData } })
         }
-        const userId = localStorage.getItem('currentUserId');
+        const userId = user?.id || localStorage.getItem('currentUserId');
 
         const response = await fetch(`http://localhost:5001/volunteers/${userId}`, {
             method: 'PATCH',
@@ -62,9 +63,9 @@ export default function VolunteerForm() {
 
 
     return (
-        <div className="flex flex-col items-center ">
-            <h2>Mon profil</h2>
-            <form className=" flex flex-col rounded-sm w-9/10 p-3 gap-3  rounded-lg " onSubmit={handleSubmit}>
+        <div className={"flex flex-col items-center text-(--foreground) " + classes}>
+            <h2>{title}</h2>
+            <form className=" flex flex-col rounded-sm w-9/10 p-3 gap-3 bg rounded-lg " onSubmit={handleSubmit}>
                 <InputLabel name="Prénom" type="text" dataName="firstname" placeholder="Votre prénom" value={dataForm.firstname || ""} onChange={handleChange} />
                 <InputLabel name="Nom" type="text" dataName="lastname" placeholder="Votre nom" value={dataForm.lastname || ""} onChange={handleChange} />
                 <InputLabel name="Pseudo" type="text" dataName="username" placeholder="Votre pseudo" value={dataForm.username || ""} onChange={handleChange} />
@@ -76,8 +77,8 @@ export default function VolunteerForm() {
                         {errorMessage}
                     </div>
                 )}
-                <ButtonForm type="submit" lucide={<Save />} text={"Mise à jour"} classes={"bg-(--primary-color) text-(--background) mb-2"} />
-                <Button type="button" onClick={handleClick} lucide={<LogOut />} classes="bg-(--text-secondary)" text={"Déconnexion"}></Button>
+                {children}
+  
             </form>
         </div>
     )
