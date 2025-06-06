@@ -33,10 +33,16 @@ export default function ProfilesCard({ user }) {
     const toggleDeleteModal = () => {
         setConfirmModal(!confirmModal)
     }
+    const updateUser = (updatedUser) => {
+        user.firstname = updatedUser.firstname;
+        user.lastname = updatedUser.lastname;
+        user.title = updatedUser.city.title;
+        toggleUpdateModal(); 
+    };
 
     return (
         !deleted && (
-            <div className="flex flex-row gap-3 justify-between content-end  items-center border-1 border-(--border-color) m-2 p-2 w-[26rem] rounded-lg hover:shadow-lg hover:translate-y-[-3px] duration-[0.2s] ease-in-out">
+            <div className="flex flex-row w-full gap-3 justify-between content-end  items-center border-1 border-(--border-color) m-2 p-2 w-[26rem] rounded-lg hover:shadow-lg ">
                 <ProfilesText name={`${firstname} ${lastname}`} city={user.title} />
                 <div className="flex flex-row gap-3 ">
                     <ProfilesButton lucide={<Pen />} onClick={toggleUpdateModal} classes="text-(--wastePlastic) hover:bg-(--wastePlastic) bg-(--buttonBlue-background) "></ProfilesButton>
@@ -52,7 +58,7 @@ export default function ProfilesCard({ user }) {
                     </div>
                 )}
                 {updateModal && ( 
-                    <VolunteerForm title="Modifier le bénévole" user={user} classes={"absolute bg-(--background) text-(--foreground) top-0 left-1/20 w-9/10  rounded-sm z-100"}>
+                    <VolunteerForm title="Modifier le bénévole" onSubmit={updateUser} user={user} classes={"absolute bg-(--background) text-(--foreground) top-0 left-0 w-full  rounded-sm z-100"}>
                         <div className="flex flex-row gap-3">
                         <ButtonForm type="submit"  text={"Modifier"} classes={"bg-(--primary-color) text-(--background) mb-2"} />
                         <Button type="button" onClick={toggleUpdateModal}  classes="bg-(--text-secondary)" text={"Annuler"}></Button>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import InputCity from "../atoms/InputCity";
 import InputLabel from "../atoms/InputLabel";
 
-export default function VolunteerForm({children, user, title, classes}) {
+export default function VolunteerForm({children, user, title, classes, onSubmit}) {
     const [villeData, setVilleData] = useState(null);
     const [dataForm, setDataForm] = useState({});
     const [errorMessage, setErrorMessage] = useState("");
@@ -57,15 +57,18 @@ export default function VolunteerForm({children, user, title, classes}) {
         }
         setDataForm({})
         setVilleData(null)
+        if (typeof onSubmit === "function") {
+            onSubmit(final);
+        }
         console.log(dataForm)
 
     }
 
 
     return (
-        <div className={"flex flex-col items-center text-(--foreground) " + classes}>
+        <div className={"flex flex-col w-full items-center text-(--foreground) bg-(--background) border-(--border-color) border-0 rounded-lg shadow-lg " + classes}>
             <h2>{title}</h2>
-            <form className=" flex flex-col rounded-sm w-9/10 p-3 gap-3 bg rounded-lg " onSubmit={handleSubmit}>
+            <form className=" flex flex-col rounded-sm  w-full p-3 gap-3   " onSubmit={handleSubmit}>
                 <InputLabel name="Prénom" type="text" dataName="firstname" placeholder="Votre prénom" value={dataForm.firstname || ""} onChange={handleChange} />
                 <InputLabel name="Nom" type="text" dataName="lastname" placeholder="Votre nom" value={dataForm.lastname || ""} onChange={handleChange} />
                 <InputLabel name="Pseudo" type="text" dataName="username" placeholder="Votre pseudo" value={dataForm.username || ""} onChange={handleChange} />
