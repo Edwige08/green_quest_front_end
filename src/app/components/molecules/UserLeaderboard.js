@@ -2,7 +2,7 @@ export default function UserLeaderboard (props) {
 
     return(
         <>
-            <div className="border p-4 text-left transition duration-300 hover:shadow-md flex gap-3">
+            <div className="flex flex-row gap-3 items-center border-1 border-(--border-color) m-2 p-2 w-[26rem] h-15 rounded-lg hover:shadow-lg hover:translate-y-[-3px] duration-[0.2s] ease-in-out">
                 {console.log('❤️')}
                 
                 <p className="uppercase font-bold">
