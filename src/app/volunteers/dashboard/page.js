@@ -73,7 +73,7 @@ export default function Dashboard() {
     }, [displayedMonth])
 
     return (
-        <div className="flex flex-col items-center m-auto max-w-[28rem] bg-[white] border-(--border-color) border-0 rounded-lg shadow-lg">
+        <div className="flex flex-col items-center m-auto max-w-[28rem] bg-(--background) border-(--border-color) border-0 rounded-lg shadow-lg">
             <div className="flex flex-col gap-2 m-4">
                 <p className="text-center font-bold text-lg">Bonjour {profileFirstName} !</p>
                 <div className="flex flex-row gap-2">

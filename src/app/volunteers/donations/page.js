@@ -21,7 +21,7 @@ export default function Donations() {
 
     return (
         <main>
-            <div className="flex flex-col items-center m-auto max-w-[28rem] border-(--border-color) border-0 rounded-lg shadow-lg">
+            <div className="flex flex-col items-center m-auto max-w-[28rem] bg-(--background) border-(--border-color) border-0 rounded-lg shadow-lg">
                 <p className="text-center font-bold text-lg">Faire un don</p>
 
                 <p className="flex gap-2 text-(--primary-color) "> <Gift /> Points collectées : {collectedPoints}  </p>
