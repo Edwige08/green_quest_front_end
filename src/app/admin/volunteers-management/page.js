@@ -5,7 +5,7 @@ import { useDebugValue, useEffect, useState } from "react";
 export default function Management () {
     const [users, setUsers] = useState([])
 
-    const fetchUsers = async (moment, localisation) => {
+    const fetchUsers = async () => {
         const response = await fetch("http://localhost:5001/volunteers")
         const data = await response.json()
         setUsers(data)
