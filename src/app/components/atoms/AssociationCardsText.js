@@ -3,6 +3,8 @@ import AssociationsCardsButton from "../atoms/AssociationCardsButton"
 import { useEffect, useState } from "react"
 
 export default function AssociationsCardsText() {
+
+
     const [associationsData, setAssociationsData] = useState([])
 
     async function getAssociations() {
@@ -10,7 +12,6 @@ export default function AssociationsCardsText() {
         const data = await response.json()
         console.log('💾', data)
         setAssociationsData(data)
-
     }
 
     useEffect(() => {
