@@ -36,7 +36,7 @@ export default function ProfilesCard({ user }) {
 
     return (
         !deleted && (
-            <div className="flex flex-row gap-3 justify-between content-end w-full items-center">
+            <div className="flex flex-row gap-3 justify-between content-end  items-center border-1 border-(--border-color) m-2 p-2 w-[26rem] rounded-lg hover:shadow-lg hover:translate-y-[-3px] duration-[0.2s] ease-in-out">
                 <ProfilesText name={`${firstname} ${lastname}`} city={user.title} />
                 <div className="flex flex-row gap-3 ">
                     <ProfilesButton lucide={<Pen />} onClick={toggleUpdateModal} classes="text-(--wastePlastic) hover:bg-(--wastePlastic) bg-(--buttonBlue-background) "></ProfilesButton>
