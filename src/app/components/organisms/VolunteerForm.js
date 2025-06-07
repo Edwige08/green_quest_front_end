@@ -83,7 +83,7 @@ export default function VolunteerForm({children, user, title, classes, onSubmit}
     >
       <h2>{title}</h2>
       <form
-        className=" flex flex-col rounded-sm  w-full p-3 gap-3   "
+        className=" flex flex-col rounded-sm  w-full p-3    "
         onSubmit={handleSubmit}
       >
         <InputLabel

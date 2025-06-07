@@ -43,7 +43,7 @@ export default function InputCity({onSelect}) {
     };
 
     return (
-        <div className="relative flex-col flex">
+        <div className="relative flex-col flex mb-2">
             <label htmlFor='city'>Ville</label>
             <input
                 type="text"
@@ -54,7 +54,7 @@ export default function InputCity({onSelect}) {
                     setSelectedCity("")
                 }}
                 placeholder="Entrez une ville..."
-                className=" p-2 w-full border-2 border-black-200 rounded-md focus:outline-none focus:border-(--primary-color) focus:ring-2 focus:ring-(--primary-color) hover:border-(--primary-color-hover) hover:ring-(--primary-color-hover)  "
+                className=" p-2 w-full border-2 border-black-200 rounded-md focus:outline-none focus:border-(--primary-color) focus:ring-2 focus:ring-(--primary-color) hover:border-(--primary-color-hover) hover:ring-(--primary-color-hover) mb-2 "
             />
             {villes.length > 0 && (
                 <ul className=" bg-white rounded-md  w-9/10 z-10 ">
