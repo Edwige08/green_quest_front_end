@@ -16,6 +16,7 @@ export default function Management() {
   };
 
   const toggleNewVolunteerModal = () => {
+    console.log("toggleNewVolunteerModal");
     setNewVolunteerModal(!newVolunteerModal);
   };
 
@@ -27,9 +28,9 @@ export default function Management() {
       },
       body: JSON.stringify(data),
     });
-      fetchUsers();
-      toggleNewVolunteerModal();
-  }
+    fetchUsers();
+    toggleNewVolunteerModal();
+  };
 
   useEffect(() => {
     fetchUsers();
@@ -48,12 +49,18 @@ export default function Management() {
       />
       <ProfilesList users={users} />
       {newVolunteerModal && (
-        <VolunteerForm classes={"absolute"} onsubmit={newUser} title={"Ajouter un.e bénévole"}>
+        <VolunteerForm
+          classes={"absolute"}
+          onSubmit={newUser}
+          title={"Ajouter un.e bénévole"}
+        >
           <div className="flex flex-row gap-3 text-(--background)">
             <ButtonForm
               type="submit"
               text={"ajouter"}
-              classes={"bg-(--primary-color)  hover:bg-(--primary-color-hover) mb-2"}
+              classes={
+                "bg-(--primary-color)  hover:bg-(--primary-color-hover) mb-2"
+              }
             />
             <Button
               type="button"
