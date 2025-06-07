@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 
 export default function Dashboard() {
 
-    const profileFirstName = "Phoebe";    // /!\ A RECUPERER SELON PROFIL CONNECTE
-    const profileId = 1;                  // /!\ A RECUPERER SELON PROFIL CONNECTE
+    const profileFirstName = localStorage.getItem("currentUserName");    // /!\ A RECUPERER SELON PROFIL CONNECTE
+    const profileId = localStorage.getItem("currentUserId");                  // /!\ A RECUPERER SELON PROFIL CONNECTE
 
     const options = { month: "long" };                                              // Sert à l'affichage du mois en lettres
     const [currentDate, setCurrentDate] = useState(new Date());                     // Date au format long
