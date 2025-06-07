@@ -6,7 +6,9 @@ export default function Admin({children}) {
     return (
         <>
             <Navbar items = {items} />
+            <div className="p-2 bg-(--background-color) text-(--foreground) flex flex-col items-center m-auto  w-full">
             {children}
+            </div>
         </>
     );
 }

@@ -40,27 +40,32 @@ export default function VolunteerForm({children, user, title, classes, onSubmit}
             ...dataForm,
             ...(villeData && { city: { ...villeData } })
         }
-        const userId = user?.id || localStorage.getItem('currentUserId');
-
-        const response = await fetch(`http://localhost:5001/volunteers/${userId}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(final)
-        });
-        const result = await response.text();
-        if (response.status == 401) {
-            setErrorMessage(result)
-        } else {
-            setErrorMessage("")
-        }
-        setDataForm({})
-        setVilleData(null)
-        if (typeof onSubmit === "function") {
+        if (onSubmit?.name == "newUser") {
             onSubmit(final);
+        } else {
+
+            const userId = user?.id || localStorage.getItem('currentUserId');
+            
+            const response = await fetch(`http://localhost:5001/volunteers/${userId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(final)
+            });
+            const result = await response.text();
+            if (response.status == 401) {
+                setErrorMessage(result)
+            } else {
+                setErrorMessage("")
+            }
+            setDataForm({})
+            setVilleData(null)
+            if (typeof onSubmit === "function") {
+                onSubmit(final);
+            }
+            console.log(dataForm)
         }
-        console.log(dataForm)
 
     }
 
