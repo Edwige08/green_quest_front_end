@@ -10,6 +10,7 @@
   --third-color: #ecfdf5;
   --text-color: #1f2937;
   --text-secondary: #6b7280;
+  --text-secondary-hover: #4b5563;
   --border-color: #e5e7eb;
   --hover-color: #f3f4f6;
   --wasteCigarette: #fbbf24;
@@ -38,6 +39,7 @@
     --buttonRed-background: #421b1b;
     --buttonBlue-background: #314b6e;
     --buttonGreen-background: #10351a;
+
   }
 }
 

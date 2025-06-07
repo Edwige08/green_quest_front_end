@@ -60,8 +60,8 @@ export default function ProfilesCard({ user }) {
                 {updateModal && ( 
                     <VolunteerForm title="Modifier le bénévole" onSubmit={updateUser} user={user} classes={"absolute bg-(--background) text-(--foreground) top-0 left-0 w-full  rounded-sm z-100"}>
                         <div className="flex flex-row gap-3">
-                        <ButtonForm type="submit"  text={"Modifier"} classes={"bg-(--primary-color) text-(--background) mb-2"} />
-                        <Button type="button" onClick={toggleUpdateModal}  classes="bg-(--text-secondary)" text={"Annuler"}></Button>
+                        <ButtonForm type="submit"  text={"Modifier"} classes={"bg-(--primary-color) text-(--background) hover:bg-(--primary-color-hover) mb-2"} />
+                        <Button type="button" onClick={toggleUpdateModal}  classes="bg-(--text-secondary) text-(--background) hover:bg-(--text-secondary-hover) " text={"Annuler"}></Button>
                         </div>
                     </VolunteerForm>
                 )}

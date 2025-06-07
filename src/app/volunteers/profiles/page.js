@@ -19,8 +19,8 @@ export default function Profiles() {
         <div className="flex flex-col items-center m-auto max-w-[28rem] ">
 
             <VolunteerForm title={"Mon profil"}>
-                <ButtonForm type="submit" lucide={<Save />} text={"Mise à jour"} classes={"bg-(--primary-color) text-(--background) mb-2"} />
-                <Button type="button" onClick={handleClick} lucide={<LogOut />} classes="bg-(--text-secondary)" text={"Déconnexion"}></Button>
+                <ButtonForm type="submit" lucide={<Save />} text={"Mise à jour"} classes={"bg-(--primary-color) text-(--background) hover:bg-(--primary-color-hover) mb-2"} />
+                <Button type="button" onClick={handleClick} lucide={<LogOut />} classes="bg-(--text-secondary) text-(--background) hover:bg-(--text-secondary-hover)" text={"Déconnexion"}></Button>
             </VolunteerForm>
         </div>
         </>

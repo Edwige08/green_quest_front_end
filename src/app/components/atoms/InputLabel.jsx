@@ -10,7 +10,7 @@ export default function InputLabel ({ name, dataName, placeholder, onChange, typ
                 {...(value !== undefined ? { value } : {})}
                 placeholder={placeholder}
                 maxLength={maxLength}
-                className={classes + " p-2 rounded-md"}
+                className={classes + " p-2 rounded-md focus:outline-none focus:border-(--primary-color) focus:ring-2 focus:ring-(--primary-color) hover:border-(--primary-color-hover) hover:ring-(--primary-color-hover)"}
             />
         </div>
     </>
