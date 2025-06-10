@@ -1,4 +1,4 @@
-export default function InputLabel ({ name, dataName, placeholder, onChange, type, value, maxLength = 150, classes = "border-2 border-black-200" }) {
+export default function InputLabel ({ name, dataName, placeholder, onChange, type, value, maxLength = 150, classes = "border-1 border-(--border-color)" }) {
 
     return <>
         <div className="flex flex-col  ">

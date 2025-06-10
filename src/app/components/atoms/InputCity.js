@@ -53,8 +53,8 @@ export default function InputCity({onSelect}) {
                     setQuery(e.target.value)
                     setSelectedCity("")
                 }}
-                placeholder="Entrez une ville..."
-                className=" p-2 w-full border-2 border-black-200 rounded-md focus:outline-none focus:border-(--primary-color) focus:ring-2 focus:ring-(--primary-color) hover:border-(--primary-color-hover) hover:ring-(--primary-color-hover) mb-2 "
+                placeholder="Votre ville"
+                className=" p-2 w-full border-1 border-(--border-color) rounded-md focus:outline-none focus:border-(--primary-color) focus:ring-2 focus:ring-(--primary-color) hover:border-(--primary-color-hover) hover:ring-(--primary-color-hover) mb-2 "
             />
             {villes.length > 0 && (
                 <ul className=" bg-white rounded-md  w-9/10 z-10 ">
