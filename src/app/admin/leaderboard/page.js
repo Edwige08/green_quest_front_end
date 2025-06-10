@@ -3,8 +3,6 @@ import { Trophy } from "lucide-react";
 
 export default function Leaderboard() {
 
-
-
     return (
         <>
             <main>

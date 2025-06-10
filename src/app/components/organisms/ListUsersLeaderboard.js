@@ -24,7 +24,12 @@ export default function ListUsersLeaderboard() {
         <>
                 {users.map((user, index) => {
                     return (
-                        <UserLeaderboard username={user.username} points={user.total} key={index} />
+                        <UserLeaderboard
+                         username={user.username} 
+                         points={user.total} 
+                         key={index} 
+                         index={index}
+                         />
                     )
 
                 })}
