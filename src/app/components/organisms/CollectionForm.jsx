@@ -4,18 +4,19 @@ import InputCity from "@/app/components/atoms/InputCity";
 import InputWaste from "@/app/components/atoms/InputWaste";
 import ButtonForm from "@/app/components/atoms/ButtonForm";
 import CollectionList from "../molecules/collectionsList";
+import Collection from "../atoms/collection";
 import { Save } from "lucide-react";
 
 import { useState, useEffect } from 'react';
 
 
-export default function CollectionForm () {
+export default function CollectionForm() {
 
     const [wastes, setWastes] = useState([]);
     const [disabledButton, setDisabledButton] = useState(true);
     const [city, setCity] = useState("");
 
-    const [datas, setDatas] = useState({ volunteerId: "", quantitiesArray: [], city});
+    const [datas, setDatas] = useState({ volunteerId: "", quantitiesArray: [], city });
 
     const [savedDatasCollect, setSavedDatasCollect] = useState([]);
 
@@ -43,11 +44,6 @@ export default function CollectionForm () {
         }
     }, [city])
 
-    useEffect(() => {
-        if (datas.quantitiesArray.length > 0) {
-            setSavedDatasCollect(localStorage.getItem(savedDatasCollect));
-        }
-    }, [savedDatasCollect])
 
 
 
@@ -62,11 +58,10 @@ export default function CollectionForm () {
             },
             body: JSON.stringify(datas)
         })
-        const data = {"status": response.status, rep: await response.json()};
+        const data = { "status": response.status, rep: await response.json() };
         // console.log(data.rep);
-        
-        savedDatasCollect.push(data.rep[0]);
-        setSavedDatasCollect(savedDatasCollect)
+
+        setSavedDatasCollect(prev => [...prev,data.rep[0]])
         console.log("yo", savedDatasCollect)
 
         // localStorage.setItem("savedDatasCollect", JSON.stringify(savedDatasCollect));
@@ -104,28 +99,27 @@ export default function CollectionForm () {
         <>
             <form onSubmit={addCollect} className="w-full m-auto max-w-[28rem] bg-(--background) border-(--border-color) border-0 rounded-lg shadow-lg p-5">
 
-                <InputCity onSelect={handleSelect}/>
+                <InputCity onSelect={handleSelect} />
 
                 <h2>Type de déchet *</h2>
                 {wastes.map((waste) => {
-                        return <InputWaste onChange={handleChange} key={waste.id} wasteTitle={waste.label} wasteId={waste.id} wastePoints={waste.points_value}/>
-                    })
+                    return <InputWaste onChange={handleChange} key={waste.id} wasteTitle={waste.label} wasteId={waste.id} wastePoints={waste.points_value} />
+                })
                 }
 
-                <ButtonForm 
-                    type="submit" 
+                <ButtonForm
+                    type="submit"
                     classes="text-white bg-(--primary-color) hover:bg-(--primary-color-hover) disabled:opacity-50 disabled:cursor-default"
-                    lucide={<Save />} 
-                    text="Enregistrer" 
+                    lucide={<Save />}
+                    text="Enregistrer"
                     disabled={disabledButton}
                 />
 
 
 
             </form>
-            
             <CollectionList data={savedDatasCollect}/>
-            
+
         </>
     )
 }

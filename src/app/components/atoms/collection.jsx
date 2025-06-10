@@ -1,6 +1,6 @@
 export default function Collection ({ date, ville, wastes }) {
 
-    console.log(wastes)
+    console.log(ville)
 
     return (
         <div>
