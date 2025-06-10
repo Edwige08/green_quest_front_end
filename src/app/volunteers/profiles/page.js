@@ -10,8 +10,7 @@ export default function Profiles() {
     const router = useRouter();
 
      const handleClick = () => {
-        localStorage.removeItem('currentUserId');
-        localStorage.removeItem('currentUserName');
+        localStorage.clear();
         router.push('/login')
     }
     return (
