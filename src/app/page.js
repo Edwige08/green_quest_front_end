@@ -10,11 +10,11 @@ export default function LandingPage() {
 
   return (
     <>
-        <h1 className='text-center'>Bienvenue sur Green Quest !</h1>
+        <h1 className='text-center p-4'>Bienvenue sur Green Quest !</h1>
 
-        <div className='flex gap-5 p-5'>
-          <Button classes="bg-(--primary-color) hover:bg-(--primary-color-hover)" type="button" onClick={() => {router.push('/login')}} lucide={<PencilLine />} text="Se connecter"/>
-          <Button classes="bg-(--primary-color) hover:bg-(--primary-color-hover)" type="button" onClick={() => {router.push('/registration')}} lucide={<LogIn />} text="S'inscrire"/>
+        <div className='flex justify-center gap-5 p-5'>
+          <Button classes="bg-(--primary-color) max-w-sm text-(--third-color) hover:bg-(--primary-color-hover)" type="button" onClick={() => {router.push('/login')}} lucide={<PencilLine />} text="Se connecter"/>
+          <Button classes="bg-(--primary-color) max-w-sm text-(--third-color) hover:bg-(--primary-color-hover)" type="button" onClick={() => {router.push('/registration')}} lucide={<LogIn />} text="S'inscrire"/>
         </div>
     </>
   );
