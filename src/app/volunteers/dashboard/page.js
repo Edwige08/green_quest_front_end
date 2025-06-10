@@ -5,8 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function Dashboard() {
 
-    const profileFirstName = localStorage.getItem("currentUserName");    // /!\ A RECUPERER SELON PROFIL CONNECTE
-    const profileId = localStorage.getItem("currentUserId");                  // /!\ A RECUPERER SELON PROFIL CONNECTE
+
 
     const options = { month: "long" };                                              // Sert à l'affichage du mois en lettres
     const [currentDate, setCurrentDate] = useState(new Date());                     // Date au format long
@@ -14,7 +13,7 @@ export default function Dashboard() {
     const [amountWastesByMonth, setAmountWastesByMonth] = useState([]);
     const [displayedMonth, setDisplayedMonth] = useState(currentDate.getMonth());   // Numéro du mois
     const [displayedYear, setDisplayedYear] = useState(currentDate.getFullYear());  // Numéro de l'année
-
+    const [profile, setProfile] = useState({})
     // Fonction qui retourne le mois en lettres : 
     function getCurrentMonthinLetter (myDate) {
         return new Intl.DateTimeFormat("fr-FR", options).format(myDate)
@@ -30,7 +29,7 @@ export default function Dashboard() {
     // Fonction de récupération des déchets ramassés selon le mois et l'user :
     async function fetchAmountWastesByMonth(userId) {
         let dateForRequest = displayedMonth < 9 ? `${displayedYear}-0${displayedMonth + 1}-01` : `${displayedYear}-${displayedMonth + 1}-01`;     // Attention, mois = 6 et non 06 !!! donc chemin ne marche pas
-        const promise = await fetch(`http://localhost:5001/collections/${userId}/${dateForRequest}`);
+        const promise = await fetch(`http://localhost:5001/collections/${profile.id}/${dateForRequest}`);
         const data = await promise.json();
         setAmountWastesByMonth(data);
     }
@@ -58,19 +57,32 @@ export default function Dashboard() {
     }
 
     useEffect(() => {
+        const storedName = localStorage.getItem("currentUserName");
+        const storedId = localStorage.getItem("currentUserId")
+        const storedProfile = {
+            username : storedName,
+            id : storedId
+        }
+        setProfile(storedProfile);
+        console.log(profile)
+    }, []);
+
+    useEffect(() => {
         fetchWastes()
     }, [])
+
     useEffect(() => {
-        fetchAmountWastesByMonth(profileId)
-    }, [])
+        fetchAmountWastesByMonth(profile.id)
+    }, [profile])
+
     useEffect(() => {
-        fetchAmountWastesByMonth(profileId)
-    }, [displayedMonth])
+        fetchAmountWastesByMonth(profile.id)
+    }, [displayedMonth, profile])
 
     return (
         <div className="flex flex-col items-center m-auto max-w-[28rem] bg-(--background) border-(--border-color) border-0 rounded-lg shadow-lg">
             <div className="flex flex-col gap-2 m-4">
-                <p className="text-center font-bold text-lg">Bonjour {profileFirstName} !</p>
+                <p className="text-center font-bold text-lg">Bonjour {profile.username} !</p>
                 <div className="flex flex-row gap-2">
                     <button onClick={lastMonth} className="rounded-full p-1 hover:bg-(--border-color) duration-[0.3s] ease-in-out">
                         <Icons.ChevronLeft />
