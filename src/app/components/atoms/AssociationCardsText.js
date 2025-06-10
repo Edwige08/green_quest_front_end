@@ -2,7 +2,7 @@
 import AssociationsCardsButton from "../atoms/AssociationCardsButton"
 import { useEffect, useState } from "react"
 
-export default function AssociationsCardsText() {
+export default function AssociationsCardsText({points}) {
 
 
     const [associationsData, setAssociationsData] = useState([])
@@ -35,7 +35,7 @@ export default function AssociationsCardsText() {
                             {association.description}
                         </p>
                         <hr className="m-4 border-(--border-color) border-1" ></hr>
-                        <AssociationsCardsButton/>
+                        <AssociationsCardsButton points={points} associationName={association.title}/>
                     </div>
                 ))}
             </div>

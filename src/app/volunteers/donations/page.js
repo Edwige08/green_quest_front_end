@@ -29,7 +29,7 @@ export default function Donations() {
 
             <p className="flex gap-2 text-(--primary-color) "> <Gift /> Points collectées : {pointsData}  </p>
                 <div className="shadow-black m-3 ">
-                    <AssociationsCards />
+                    <AssociationsCards points={pointsData}/>
                 </div>
             </div>
         </main >
