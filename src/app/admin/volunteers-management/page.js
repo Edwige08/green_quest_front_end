@@ -79,7 +79,7 @@ export default function Management() {
           <div className="flex flex-row gap-3 text-(--background)">
             <ButtonForm
               type="submit"
-              text={"ajouter"}
+              text={"Ajouter"}
               classes={
                 "bg-(--primary-color)  hover:bg-(--primary-color-hover) mb-2"
               }
