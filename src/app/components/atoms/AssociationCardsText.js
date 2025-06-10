@@ -27,7 +27,7 @@ export default function AssociationsCardsText() {
         
             <div className="flex flex-col content-center leading-9 gap-3 w-100" >
                 {associationsData && associationsData.map((association) => (
-                    <div key={association.id} className="border-2 p-2 border-(--border-color) rounded-lg">
+                    <div key={association.id} className="border-1 p-2 border-(--border-color) rounded-lg hover:shadow-lg hover:translate-y-[-3px] duration-[0.2s] ease-in-out">
                         <h3 className="flex font-bold justify-center" >
                             {association.image} {association.title}
                         </h3>
