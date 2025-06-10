@@ -18,7 +18,7 @@ export default function InputCity({onSelect}) {
             setVilles([]);
             return;
         }
-        const res = await fetch(`https://geo.api.gouv.fr/communes?nom=${search}&limit=5 &fields=centre`);
+        const res = await fetch(`https://geo.api.gouv.fr/communes?nom=${search}&limit=5&fields=centre`);
         const data = await res.json();
         console.log(data)
         setVilles(data);

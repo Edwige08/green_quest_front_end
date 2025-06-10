@@ -27,12 +27,12 @@ export default function CitySelect({ onSelect }) {
   };
 
   return (
-    <div className="mb-2 w-full">
+    <div className="mb-2 w-full ">
       <select
         id="city-select"
         value={selectedCity}
         onChange={handleChange}
-        className="border p-2 rounded w-full"
+        className="border p-2 rounded w-full bg-(--background) text-(--foreground)"
       >
         <option value="">Toutes les villes</option>
         {cities.map((city) => (
