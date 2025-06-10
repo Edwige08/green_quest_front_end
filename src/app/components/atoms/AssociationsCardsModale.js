@@ -18,7 +18,7 @@ export default function AssociationsCardsModale({ onClose, associationName,point
             <div className=" flex justify-center items-center w-full ">
 
                 {!donationMade && (
-                    <div className="bg-white p-3 rounded shadow-lg w-full flex flex-col items-center gap-3">
+                    <div className=" p-3 rounded shadow-lg w-full flex flex-col items-center gap-3">
                         <div>
 
                             <input type="number" step={100} placeholder="100 ?" list="defaultNumbers" min={0} max={points} className="border w-20 p-1 rounded-md" onChange={handleChange}></input>
