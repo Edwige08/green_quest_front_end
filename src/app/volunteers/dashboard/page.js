@@ -40,11 +40,9 @@ export default function Dashboard() {
             currentDate.setMonth(0)
             setDisplayedMonth(0)
             setDisplayedYear(displayedYear + 1)
-            console.log("FCT NEXMONTH 11")
         } else {
             currentDate.setMonth(displayedMonth + 1)
             setDisplayedMonth(displayedMonth + 1)
-            console.log("FCT NEXMONTH <11")
         }
     }
 
@@ -53,11 +51,9 @@ export default function Dashboard() {
             currentDate.setMonth(11)
             setDisplayedMonth(11)
             setDisplayedYear(displayedYear - 1)
-            console.log("FCT LASTMONTH 0")
         } else {
             currentDate.setMonth(displayedMonth - 1)
             setDisplayedMonth(displayedMonth - 1)
-            console.log("FCT LASTMONTH >0")
         }
     }
 
@@ -69,7 +65,6 @@ export default function Dashboard() {
     }, [])
     useEffect(() => {
         fetchAmountWastesByMonth(profileId)
-          console.log("🍓 displayedMonth : " + displayedMonth);
     }, [displayedMonth])
 
     return (
@@ -77,11 +72,11 @@ export default function Dashboard() {
             <div className="flex flex-col gap-2 m-4">
                 <p className="text-center font-bold text-lg">Bonjour {profileFirstName} !</p>
                 <div className="flex flex-row gap-2">
-                    <button onClick={lastMonth} className="rounded-full p-1 hover:bg-(--border-color)">
+                    <button onClick={lastMonth} className="rounded-full p-1 hover:bg-(--border-color) duration-[0.3s] ease-in-out">
                         <Icons.ChevronLeft />
                     </button>
                     <p className="flex w-[15rem] items-center justify-center">{getCurrentMonthinLetter(currentDate) + " " + displayedYear}</p>
-                    <button onClick={nextMonth} className="rounded-full p-1 hover:bg-(--border-color)">
+                    <button onClick={nextMonth} className="rounded-full p-1 hover:bg-(--border-color) duration-[0.3s] ease-in-out">
                         <Icons.ChevronRight />
                     </button>
                 </div>
