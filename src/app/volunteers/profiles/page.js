@@ -9,9 +9,9 @@ import { useRouter } from "next/navigation";
 export default function Profiles() {
     const router = useRouter();
 
-     const handleClick = () => {
+    const handleClick = () => {
         localStorage.clear();
-        router.push('http://localhost:3001')
+        router.push(`http://localhost:${process.env.NEXT_PUBLIC_PORT}`)
     }
     return (
         <>
