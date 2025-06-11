@@ -1,14 +1,34 @@
-import {Sprout, Trophy} from "lucide-react";
-import Navbar from "../components/organisms/Navbar";
+'use client'
 
-export default function Admin({children}) {
-    let items = [{ lucide: <Sprout />, text: "Gestion des bénévoles", link: "./volunteers-management" }, { lucide: <Trophy />, text: "Leaderboard", link: "./leaderboard" }]
+import { Sprout, Trophy, LogOut } from "lucide-react";
+import Navbar from "../components/organisms/Navbar";
+import Button from "@/app/components/atoms/Button";
+import { useRouter } from "next/navigation";
+
+
+
+export default function Admin({ children }) {
+    const router = useRouter();
+
+    let items = [{ lucide: <Sprout />, text: "Gestion des bénévoles", link: "./volunteers-management" },
+    { lucide: <Trophy />, text: "Leaderboard", link: "./leaderboard" }]
+
+    const handleClick = () => {
+        localStorage.clear();
+        router.push('http://localhost:3001')
+    }
+
+
     return (
         <>
-            <Navbar items = {items} />
+            <Navbar items={items} />
             <div className="p-2 bg-(--background-color) text-(--foreground) flex flex-col items-center m-auto  w-full">
-            {children}
+                {children}
             </div>
+            <div className="flex flex-col items-center m-auto max-w-[28rem] ">
+                <Button type="button" onClick={handleClick} lucide={<LogOut />} classes="bg-(--text-secondary) text-(--background) hover:bg-(--text-secondary-hover)" text={"Déconnexion"}></Button>
+            </div>
+
         </>
     );
 }
