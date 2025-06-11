@@ -11,7 +11,7 @@ export default function Profiles() {
 
      const handleClick = () => {
         localStorage.clear();
-        router.push('/login')
+        router.push('http://localhost:3001')
     }
     return (
         <>
