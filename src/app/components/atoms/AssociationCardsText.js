@@ -35,7 +35,7 @@ export default function AssociationsCardsText({points}) {
                             {association.description}
                         </p>
                         <hr className="m-4 border-(--border-color) border-1" ></hr>
-                        <AssociationsCardsButton points={points} associationName={association.title}/>
+                        <AssociationsCardsButton points={points} associationName={association.title} associationId={association.id}/>
                     </div>
                 ))}
             </div>

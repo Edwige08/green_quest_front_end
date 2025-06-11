@@ -4,7 +4,7 @@ import { Heart } from "lucide-react"
 import AssociationsCardsModale from "./AssociationsCardsModale"
 import { useState } from "react"
 
-export default function AssociationsCardsButton({points, associationName}) {
+export default function AssociationsCardsButton({points, associationName, associationId}) {
 
     const [showModal, setShowModal] = useState(false)
 
@@ -20,7 +20,7 @@ export default function AssociationsCardsButton({points, associationName}) {
                 )}
 
             {showModal && (
-                <AssociationsCardsModale points={points} onClose={() => setShowModal(false)} associationName={associationName} />
+                <AssociationsCardsModale points={points} onClose={() => setShowModal(false)} associationName={associationName} associationId={associationId} />
             )}
         </>
     )

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 
-export default function AssociationsCardsModale({ onClose, associationName,points }) {
+export default function AssociationsCardsModale({ onClose, associationName,points, associationId }) {
     const [donationMade, setDonationMade] = useState(false);
     const [donation, setDonation] = useState(0);
 
@@ -10,7 +10,17 @@ export default function AssociationsCardsModale({ onClose, associationName,point
         console.log(donation)
     }
 
-    const handleDonation = () => {
+    const handleDonation = async () => {
+    //     const data = {
+    //         vol
+    //     }
+    //     const response = await fetch("http://localhost:5001/donations", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // });
         setDonationMade(true)
     }
     return (
