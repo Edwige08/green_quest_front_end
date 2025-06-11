@@ -26,6 +26,7 @@ export default function LoginForm () {
     const [errorMessage, setErrorMessage] = useState("error");
 
     const [disabledButton, setDisabledButton] = useState(true);
+    const [displayLoader, setDisplayLoader] = useState("hidden");
 
     useEffect(() => {
         const areInputsFilled = (dataForm.username?.trim() || "") && (dataForm.password?.trim() || "");
@@ -69,6 +70,7 @@ export default function LoginForm () {
 
     const checkAutentification = async (e) => {
         e.preventDefault();
+        setDisplayLoader("block");
 
         dataForm.username ? setBorderUsername("border-2 border-black-200") : setBorderUsername("border-2 border-red-500");
 
@@ -92,15 +94,18 @@ export default function LoginForm () {
         if (datas.status == 401) {
             setErrorDisplay('block')
             setErrorMessage(datas.currentUser.message)
+            setDisplayLoader("hidden");
         } else if (datas.status == 200) {
             saveCurrentUser(datas);
             redirectToDashboard();
         }
 
+        
+        
         return datas;
     };
 
-    return <Form onSubmit={checkAutentification}>
+    return <Form className="relative" onSubmit={checkAutentification}>
                 <ErrorMessage message={errorMessage} classes={errorDisplay}/>
                 <InputLabel 
                     onChange={handleChangeUsername} 
@@ -127,5 +132,10 @@ export default function LoginForm () {
                     text="Se connecter" 
                     disabled={disabledButton}
                 />
+                <div className={displayLoader + " w-[150px] h-[150px] flex justify-center items-center bg-(--secondary-color) shadow-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-md"}>
+                    <div className="w-[50px] h-[50px] flex justify-center items-center">
+                        <span className="loader"></span>
+                    </div>
+                </div>
             </Form>
 }
