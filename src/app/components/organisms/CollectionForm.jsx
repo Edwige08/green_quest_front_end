@@ -4,26 +4,18 @@ import InputCity from "@/app/components/atoms/InputCity";
 import InputWaste from "@/app/components/atoms/InputWaste";
 import ButtonForm from "@/app/components/atoms/ButtonForm";
 import CollectionList from "../molecules/collectionsList";
-import Collection from "../atoms/collection";
+
 import { Save } from "lucide-react";
 
 import { useState, useEffect } from 'react';
-
 
 export default function CollectionForm() {
 
     const [wastes, setWastes] = useState([]);
     const [disabledButton, setDisabledButton] = useState(true);
     const [city, setCity] = useState("");
-
     const [datas, setDatas] = useState({ volunteerId: "", quantitiesArray: [], city });
-
     const [savedDatasCollect, setSavedDatasCollect] = useState([]);
-
-    const displayCollect = () => {
-
-
-    }
 
     useEffect(() => {
         async function fetchWastes() {
@@ -35,7 +27,6 @@ export default function CollectionForm() {
         fetchWastes();
     }, []);
 
-
     useEffect(() => {
         datas.city = city;
         datas.volunteerId = localStorage?.getItem("currentUserId");
@@ -44,13 +35,9 @@ export default function CollectionForm() {
         }
     }, [city])
 
-
-
-
     const addCollect = async (e) => {
         e.preventDefault();
-        // console.log(e);
-        // console.log(datas);
+
         const response = await fetch("http://localhost:5001/collections", {
             method: "POST",
             headers: {
@@ -59,14 +46,10 @@ export default function CollectionForm() {
             body: JSON.stringify(datas)
         })
         const data = { "status": response.status, rep: await response.json() };
-        // console.log(data.rep);
-
         setSavedDatasCollect(prev => [...prev,data.rep[0]])
-        console.log("yo", savedDatasCollect)
 
         // localStorage.setItem("savedDatasCollect", JSON.stringify(savedDatasCollect));
 
-        displayCollect(savedDatasCollect);
     }
 
     const handleChange = (value, id, points) => {
@@ -114,12 +97,9 @@ export default function CollectionForm() {
                     text="Enregistrer"
                     disabled={disabledButton}
                 />
-
-
-
             </form>
-            <CollectionList data={savedDatasCollect}/>
 
+            <CollectionList data={savedDatasCollect}/>
         </>
     )
 }
