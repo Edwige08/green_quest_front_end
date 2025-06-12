@@ -1,5 +1,5 @@
 'use client'
-import AssociationsCardsButton from "../atoms/AssociationCardsButton"
+import AssociationsCardsButton from "./AssociationCardsButton"
 import { useEffect, useState } from "react"
 
 export default function AssociationsCardsText({points}) {
