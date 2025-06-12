@@ -1,14 +1,11 @@
-import AssociationsCardsButton from "../atoms/AssociationCardsButton"
-import AssociationsCardsText from "../atoms/AssociationCardsText"
+import AssociationsCardsText from '../atoms/AssociationCardsText'
 
-export default function AssociationsCards ({points}) {
-    return (
-        <>
-       
-        <div className="flex items-center border-solid flex-col mt-4 w-70 m-auto ">
-            <AssociationsCardsText points={points}/>
-        </div>
-
-         </>
-    )
+export default function AssociationsCards({points}) {
+  return (
+    <>
+      <div className="m-auto mt-4 flex w-70 flex-col items-center border-solid">
+        <AssociationsCardsText points={points} />
+      </div>
+    </>
+  )
 }

@@ -1,54 +1,49 @@
-"use client";
-import { Ban, Pen, SquareCheck, Trash2 } from "lucide-react";
-import ProfilesButton from "../atoms/ProfilesButton";
-import ProfilesText from "../atoms/ProfilesText";
-import { useState } from "react";
-import VolunteerForm from "../organisms/VolunteerForm";
-import Button from "../atoms/Button";
-import ButtonForm from "../atoms/ButtonForm";
+'use client'
+import {Ban, Pen, SquareCheck, Trash2} from 'lucide-react'
+import ProfilesButton from '../atoms/ProfilesButton'
+import ProfilesText from '../atoms/ProfilesText'
+import {useState} from 'react'
+import VolunteerForm from '../organisms/VolunteerForm'
+import Button from '../atoms/Button'
+import ButtonForm from '../atoms/ButtonForm'
 
-export default function ProfilesCard({ user }) {
-  const [confirmModal, setConfirmModal] = useState(false);
-  const [deleted, setDeleted] = useState(false);
-  const [updateModal, setUpdateModal] = useState(false);
+export default function ProfilesCard({user}) {
+  const [confirmModal, setConfirmModal] = useState(false)
+  const [deleted, setDeleted] = useState(false)
+  const [updateModal, setUpdateModal] = useState(false)
 
-  const firstname =
-    user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1);
-  const lastname =
-    user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1);
+  const firstname = user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1)
+  const lastname = user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)
 
   const toggleUpdateModal = () => {
-    setUpdateModal(!updateModal);
-  };
+    setUpdateModal(!updateModal)
+  }
 
   const handleConfirm = async () => {
-    const response = await fetch(
-      `http://localhost:5001/volunteers/${user.username}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    setDeleted(true);
-  };
+    const response = await fetch(`http://localhost:5001/volunteers/${user.username}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    setDeleted(true)
+  }
 
   const toggleDeleteModal = () => {
-    setConfirmModal(!confirmModal);
-  };
+    setConfirmModal(!confirmModal)
+  }
   const updateUser = (updatedUser) => {
-    user.firstname = updatedUser.firstname;
-    user.lastname = updatedUser.lastname;
-    user.title = updatedUser.city?.title || user.title;
-    toggleUpdateModal();
-  };
+    user.firstname = updatedUser.firstname
+    user.lastname = updatedUser.lastname
+    user.title = updatedUser.city?.title || user.title
+    toggleUpdateModal()
+  }
 
   return (
     !deleted && (
-      <div className="flex flex-row w-full gap-3 justify-between content-end  items-center border-1 border-(--border-color) m-2 p-2 w-[26rem] rounded-lg hover:shadow-lg ">
+      <div className="m-2 flex w-[26rem] w-full flex-row content-end items-center justify-between gap-3 rounded-lg border-1 border-(--border-color) p-2 hover:shadow-lg">
         <ProfilesText name={`${firstname} ${lastname}`} city={user.title} />
-        <div className="flex flex-row gap-3 ">
+        <div className="flex flex-row gap-3">
           <ProfilesButton
             lucide={<Pen />}
             onClick={toggleUpdateModal}
@@ -61,11 +56,11 @@ export default function ProfilesCard({ user }) {
           ></ProfilesButton>
         </div>
         {confirmModal && (
-          <div className="flex flex-col p-3 justify-center gap-4  items-center bg-(--background) text-(--foreground) absolute top-0 left-0 w-full h-full rounded-sm">
+          <div className="absolute top-0 left-0 flex h-full w-full flex-col items-center justify-center gap-4 rounded-sm bg-(--background) p-3 text-(--foreground)">
             <p>
               Confirmer la suppression de {firstname} {lastname}
             </p>
-            <div className="flex flex-row gap-3 ">
+            <div className="flex flex-row gap-3">
               <ProfilesButton
                 lucide={<SquareCheck />}
                 onClick={handleConfirm}
@@ -84,28 +79,20 @@ export default function ProfilesCard({ user }) {
             title="Modifier le bénévole"
             onSubmit={updateUser}
             user={user}
-            classes={
-              "absolute bg-(--background) text-(--foreground) top-0 left-0 w-full  rounded-sm z-100"
-            }
+            classes={'absolute bg-(--background) text-(--foreground) top-0 left-0 w-full  rounded-sm z-100'}
           >
             <div className="flex flex-row gap-3">
-              <ButtonForm
-                type="submit"
-                text={"Modifier"}
-                classes={
-                  "bg-(--primary-color) text-(--background) hover:bg-(--primary-color-hover) mb-2"
-                }
-              />
+              <ButtonForm type="submit" text={'Modifier'} classes={'bg-(--primary-color) text-(--background) hover:bg-(--primary-color-hover) mb-2'} />
               <Button
                 type="button"
                 onClick={toggleUpdateModal}
                 classes="bg-(--text-secondary) text-(--background) hover:bg-(--text-secondary-hover) "
-                text={"Annuler"}
+                text={'Annuler'}
               ></Button>
             </div>
           </VolunteerForm>
         )}
       </div>
     )
-  );
+  )
 }

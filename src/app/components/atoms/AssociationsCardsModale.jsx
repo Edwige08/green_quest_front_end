@@ -1,16 +1,16 @@
-import { useState } from "react";
-import Button from "./Button";
+import {useState} from 'react'
+import Button from './Button'
 
-export default function AssociationsCardsModale({ onClose, associationName,points, associationId }) {
-    const [donationMade, setDonationMade] = useState(false);
-    const [donation, setDonation] = useState(0);
+export default function AssociationsCardsModale({onClose, associationName, points, associationId}) {
+  const [donationMade, setDonationMade] = useState(false)
+  const [donation, setDonation] = useState(0)
 
-    const handleChange = (e) => {
-        setDonation(e.target.value)
-        console.log(donation)
-    }
+  const handleChange = (e) => {
+    setDonation(e.target.value)
+    console.log(donation)
+  }
 
-    const handleDonation = async () => {
+  const handleDonation = async () => {
     //     const data = {
     //         vol
     //     }
@@ -21,45 +21,42 @@ export default function AssociationsCardsModale({ onClose, associationName,point
     //   },
     //   body: JSON.stringify(data),
     // });
-        setDonationMade(true)
-    }
-    return (
-        <>
-            <div className=" flex justify-center items-center w-full ">
-
-                {!donationMade && (
-                    <div className=" p-3 rounded shadow-lg w-full flex flex-col items-center gap-3">
-                        <div>
-
-                            <input type="number" step={100} placeholder="100 ?" list="defaultNumbers" min={0} max={points} className="border w-20 p-1 rounded-md" onChange={handleChange}></input>
-                            points
-                        </div>
-
-                        <div className="flex flex-row gap-3 text-(--background) w-full ">
-                            <Button onClick={handleDonation}
-                                text={"Donner"}
-                                classes={
-                                    "bg-(--primary-color)  hover:bg-(--primary-color-hover) mb-2 w-full"
-                                }
-                            />
-                            <Button
-                                type="button"
-                                onClick={onClose}
-                                classes="bg-(--text-secondary)  hover:bg-(--text-secondary-hover) "
-                                text={"Annuler"}
-                            ></Button>
-                        </div>
-                    </div>
-                )}
-                {donationMade && (
-
-                    <p onClick={onClose} className="flex content-center items-center gap-3 m-auto cursor-pointer bg-emerald-600 text-white font-bold py-2 px-7 rounded w-fit " >
-                        Merci pour le don de {donation} points à {associationName}
-                    </p>
-                )}
-
+    setDonationMade(true)
+  }
+  return (
+    <>
+      <div className="flex w-full items-center justify-center">
+        {!donationMade && (
+          <div className="flex w-full flex-col items-center gap-3 rounded p-3 shadow-lg">
+            <div>
+              <input
+                type="number"
+                step={100}
+                placeholder="100 ?"
+                list="defaultNumbers"
+                min={0}
+                max={points}
+                className="w-20 rounded-md border p-1"
+                onChange={handleChange}
+              ></input>
+              points
             </div>
 
-        </>
-    )
+            <div className="flex w-full flex-row gap-3 text-(--background)">
+              <Button onClick={handleDonation} text={'Donner'} classes={'bg-(--primary-color)  hover:bg-(--primary-color-hover) mb-2 w-full'} />
+              <Button type="button" onClick={onClose} classes="bg-(--text-secondary)  hover:bg-(--text-secondary-hover) " text={'Annuler'}></Button>
+            </div>
+          </div>
+        )}
+        {donationMade && (
+          <p
+            onClick={onClose}
+            className="m-auto flex w-fit cursor-pointer content-center items-center gap-3 rounded bg-emerald-600 px-7 py-2 font-bold text-white"
+          >
+            Merci pour le don de {donation} points à {associationName}
+          </p>
+        )}
+      </div>
+    </>
+  )
 }

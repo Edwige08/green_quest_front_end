@@ -1,14 +1,14 @@
-import Collection from "../atoms/collection";
+import Collection from '../atoms/Collection'
 
-export default function CollectionList ({ data }) {
-    console.log("lalala")
-    console.log(data)
-    return (
-        <div className="w-full flex flex-col items-center m-auto mt-5 max-w-[28rem] bg-(--background) border-(--border-color) border-0 rounded-lg shadow-lg p-5">
-            <h2 className="text-left w-full">Mes collectes du jour ({data.length})</h2>
-            {data.map((collect, index) => 
-                    <Collection key={index} date={collect?.date} ville={collect?.cityName} wastes={collect?.collectWastes}/>
-            )}
-        </div>
-    )
+export default function CollectionList({data}) {
+  console.log('lalala')
+  console.log(data)
+  return (
+    <div className="m-auto mt-5 flex w-full max-w-[28rem] flex-col items-center rounded-lg border-0 border-(--border-color) bg-(--background) p-5 shadow-lg">
+      <h2 className="w-full text-left">Mes collectes du jour ({data.length})</h2>
+      {data.map((collect, index) => (
+        <Collection key={index} date={collect?.date} ville={collect?.cityName} wastes={collect?.collectWastes} />
+      ))}
+    </div>
+  )
 }

@@ -1,116 +1,109 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-    --background: #ffffff;
-    --background-color: #f9fafb;
-    --foreground: #171717;
-    --primary-color: #059669;
-    --primary-color-hover: #047857;
-    --secondary-color: #a7f3d0;
-    --third-color: #ecfdf5;
-    --text-color: #1f2937;
-    --text-secondary: #6b7280;
-    --text-secondary-hover: #4b5563;
-    --border-color: #e5e7eb;
-    --hover-color: #f3f4f6;
-    --wasteCigarette: #fbbf24;
-    --wastePlastic: #60a5fa;
-    --wasteGlass: #34d399;
-    --wasteMetal: #94a3b8;
-    --wasteElectronics: #a78bfa;
-    --wasteOthers: #f87171;
-    --buttonRed-background: #fee2e2;
-    --buttonBlue-background: #dbeafe;
-    --buttonGreen-background: #e2feea;
+  --background: #ffffff;
+  --background-color: #f9fafb;
+  --foreground: #171717;
+  --primary-color: #059669;
+  --primary-color-hover: #047857;
+  --secondary-color: #a7f3d0;
+  --third-color: #ecfdf5;
+  --text-color: #1f2937;
+  --text-secondary: #6b7280;
+  --text-secondary-hover: #4b5563;
+  --border-color: #e5e7eb;
+  --hover-color: #f3f4f6;
+  --wasteCigarette: #fbbf24;
+  --wastePlastic: #60a5fa;
+  --wasteGlass: #34d399;
+  --wasteMetal: #94a3b8;
+  --wasteElectronics: #a78bfa;
+  --wasteOthers: #f87171;
+  --buttonRed-background: #fee2e2;
+  --buttonBlue-background: #dbeafe;
+  --buttonGreen-background: #e2feea;
 }
 
 @theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-        --background-color: #0a0a0a;
-        --buttonRed-background: #421b1b;
-        --buttonBlue-background: #314b6e;
-        --buttonGreen-background: #10351a;
-    }
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --background-color: #0a0a0a;
+    --buttonRed-background: #421b1b;
+    --buttonBlue-background: #314b6e;
+    --buttonGreen-background: #10351a;
+  }
 }
 
 body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .input-city {
-    color: black;
+  color: black;
 }
 
 .no-apparence::-webkit-outer-spin-button,
 .no-apparence::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.no-apparence[type="number"] {
-    -moz-appearance: textfield;
+.no-apparence[type='number'] {
+  -moz-appearance: textfield;
 }
 
 /* LOADER */
 .loader {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    position: relative;
-    animation: rotate 1s linear infinite;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
 }
 .loader::before,
 .loader::after {
-    content: "";
-    box-sizing: border-box;
-    position: absolute;
-    inset: 0px;
-    border-radius: 50%;
-    border: 5px solid white;
-    animation: prixClipFix 2s linear infinite;
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid white;
+  animation: prixClipFix 2s linear infinite;
 }
 .loader::after {
-    inset: 8px;
-    transform: rotate3d(90, 90, 0, 180deg);
-    border-color: var(--primary-color);
+  inset: 8px;
+  transform: rotate3d(90, 90, 0, 180deg);
+  border-color: var(--primary-color);
 }
 
 @keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes prixClipFix {
-    0% {
-        clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
-    }
-    50% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
-    }
-    75%,
-    100% {
-        clip-path: polygon(
-            50% 50%,
-            0 0,
-            100% 0,
-            100% 100%,
-            100% 100%,
-            100% 100%
-        );
-    }
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  75%,
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
 }

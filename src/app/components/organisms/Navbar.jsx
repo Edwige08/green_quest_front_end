@@ -1,14 +1,11 @@
-import NavbarButton from "../atoms/NavbarButton";
+import NavbarButton from '../atoms/NavbarButton'
 
 export default function Navbar({items}) {
-    return (
-        <nav className="flex flex-row gap-10 justify-center p-2 text-xs border-(--border-color) shadow-lg">
-                {items.map((item, index) => {
-                    return (
-                        <NavbarButton key = {index} {...item} />
-                    )
-                })}
-                
-        </nav>
-    )
+  return (
+    <nav className="flex flex-row justify-center gap-10 border-(--border-color) p-2 text-xs shadow-lg">
+      {items.map((item, index) => {
+        return <NavbarButton key={index} {...item} />
+      })}
+    </nav>
+  )
 }

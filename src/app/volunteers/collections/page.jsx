@@ -1,16 +1,13 @@
-'use client';
+'use client'
 
-import CollectionForm from "@/app/components/organisms/CollectionForm";
+import CollectionForm from '@/app/components/organisms/CollectionForm'
 
-export default function Collections () {
+export default function Collections() {
+  return (
+    <div className="m-auto flex max-w-[28rem] flex-col items-center rounded-lg border-0 border-(--border-color) bg-(--background) p-5 shadow-lg">
+      <h1 className="mb-4 text-center text-lg font-bold">Enregistrer une collecte</h1>
 
-    
-
-    return (
-        <div className="flex flex-col items-center m-auto max-w-[28rem] bg-(--background) border-(--border-color) border-0 rounded-lg shadow-lg p-5">
-            <h1 className="text-center font-bold text-lg mb-4">Enregistrer une collecte</h1>
-
-            <CollectionForm />
-        </div>
-    );
+      <CollectionForm />
+    </div>
+  )
 }

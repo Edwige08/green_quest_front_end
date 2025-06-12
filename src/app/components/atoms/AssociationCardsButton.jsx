@@ -1,27 +1,28 @@
 'use client'
 
-import { Heart } from "lucide-react"
-import AssociationsCardsModale from "./AssociationsCardsModale"
-import { useState } from "react"
+import {useState} from 'react'
+
+import {Heart} from 'lucide-react'
+
+import AssociationsCardsModale from './AssociationsCardsModale'
 
 export default function AssociationsCardsButton({points, associationName, associationId}) {
+  const [showModal, setShowModal] = useState(false)
 
-    const [showModal, setShowModal] = useState(false)
+  return (
+    <>
+      {!showModal && (
+        <button
+          onClick={() => setShowModal(true)}
+          className="m-auto flex w-fit cursor-pointer content-center items-center gap-3 rounded-lg bg-emerald-600 px-7 py-2 font-bold text-white hover:bg-(--primary-color-hover)"
+        >
+          <Heart /> Faire un don
+        </button>
+      )}
 
-    return (
-        <>
-            {!showModal && (
-                
-                <button
-                onClick={() => setShowModal(true)}
-                className="flex content-center items-center gap-3 m-auto cursor-pointer bg-emerald-600 hover:bg-(--primary-color-hover) text-white font-bold py-2 px-7 rounded-lg w-fit ">
-                <Heart /> Faire un don
-            </button>
-                )}
-
-            {showModal && (
-                <AssociationsCardsModale points={points} onClose={() => setShowModal(false)} associationName={associationName} associationId={associationId} />
-            )}
-        </>
-    )
+      {showModal && (
+        <AssociationsCardsModale points={points} onClose={() => setShowModal(false)} associationName={associationName} associationId={associationId} />
+      )}
+    </>
+  )
 }
