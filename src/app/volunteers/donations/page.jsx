@@ -15,7 +15,7 @@ export default function Donations() {
 
   useEffect(() => {
     async function getVolunteerPoints() {
-      const response = await fetch(`http://localhost:5001/volunteers/${profileUserName}`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/volunteers/${profileUserName}`)
       const data = await response.json()
       console.log('❤️', data)
       setPointsData(data.points)

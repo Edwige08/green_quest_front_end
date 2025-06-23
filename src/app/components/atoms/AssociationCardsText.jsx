@@ -6,7 +6,7 @@ export default function AssociationsCardsText({points}) {
   const [associationsData, setAssociationsData] = useState([])
 
   async function getAssociations() {
-    const response = await fetch('http://localhost:5001/associations')
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/associations`)
     const data = await response.json()
     console.log('💾', data)
     setAssociationsData(data)

@@ -17,7 +17,7 @@ export default function Dashboard() {
 
   // Fonction de récupération de la liste des déchets :
   async function fetchWastes() {
-    const promise = await fetch('http://localhost:5001/wastes')
+    const promise = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/wastes`)
     const data = await promise.json()
     setWastedata(data)
   }
@@ -25,7 +25,7 @@ export default function Dashboard() {
   // Fonction de récupération des déchets ramassés selon le mois et l'user :
   async function fetchAmountWastesByMonth(userId) {
     let dateForRequest = displayedMonth < 9 ? `${displayedYear}-0${displayedMonth + 1}-01` : `${displayedYear}-${displayedMonth + 1}-01` // Attention, mois = 6 et non 06 !!! donc chemin ne marche pas
-    const promise = await fetch(`http://localhost:5001/collections/${profile.id}/${dateForRequest}`)
+    const promise = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/collections/${profile.id}/${dateForRequest}`)
     const data = await promise.json()
     setAmountWastesByMonth(data)
   }

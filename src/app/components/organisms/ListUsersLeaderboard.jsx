@@ -7,7 +7,7 @@ export default function ListUsersLeaderboard() {
   const [users, setUsers] = useState([])
 
   async function getDonationsByUsers() {
-    const response = await fetch('http://localhost:5001/leaderboard')
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/leaderboard`)
     const data = await response.json()
     console.log('💾', data)
     setUsers(data.donationByUser)

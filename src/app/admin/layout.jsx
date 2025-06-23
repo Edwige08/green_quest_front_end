@@ -15,7 +15,7 @@ export default function Admin({children}) {
 
   const handleClick = () => {
     localStorage.clear()
-    router.push(`http://localhost:${process.env.NEXT_PUBLIC_PORT}`)
+    router.push(`http://localhost:3000`)
   }
 
   return (

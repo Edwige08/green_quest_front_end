@@ -3,7 +3,7 @@
 import InputCity from '@/app/components/atoms/InputCity'
 import InputWaste from '@/app/components/atoms/InputWaste'
 import ButtonForm from '@/app/components/atoms/ButtonForm'
-import CollectionList from '../molecules/CollectionsList'
+import CollectionList from '@/app/components/molecules/collectionsList'
 
 import {Save} from 'lucide-react'
 
@@ -18,7 +18,7 @@ export default function CollectionForm() {
 
   useEffect(() => {
     async function fetchWastes() {
-      const response = await fetch('http://localhost:5001/wastes')
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/wastes`)
       const wastes = await response.json()
       setWastes(wastes)
     }
@@ -37,7 +37,7 @@ export default function CollectionForm() {
   const addCollect = async (e) => {
     e.preventDefault()
 
-    const response = await fetch('http://localhost:5001/collections', {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/collections`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

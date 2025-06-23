@@ -20,7 +20,7 @@ export default function ProfilesCard({user}) {
   }
 
   const handleConfirm = async () => {
-    const response = await fetch(`http://localhost:5001/volunteers/${user.username}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/volunteers/${user.username}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

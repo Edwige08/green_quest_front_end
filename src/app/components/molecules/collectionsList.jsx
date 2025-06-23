@@ -1,4 +1,4 @@
-import Collection from '../atoms/Collection'
+import Collection from '@/app/components/atoms/collection'
 
 export default function CollectionList({data}) {
   console.log('lalala')

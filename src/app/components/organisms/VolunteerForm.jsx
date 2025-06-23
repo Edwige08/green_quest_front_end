@@ -49,7 +49,7 @@ export default function VolunteerForm({children, user, title, classes, onSubmit}
     } else {
       const userId = user?.id || localStorage.getItem('currentUserId')
 
-      const response = await fetch(`http://localhost:5001/volunteers/${userId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/volunteers/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

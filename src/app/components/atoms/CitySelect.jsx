@@ -7,7 +7,7 @@ export default function CitySelect({onSelect}) {
   useEffect(() => {
     const fetchCities = async () => {
       try {
-        const response = await fetch('http://localhost:5001/cities')
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/cities`)
         const data = await response.json()
         setCities(data)
       } catch (error) {

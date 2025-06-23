@@ -14,7 +14,7 @@ export default function Management() {
   const [selectedCity, setSelectedCity] = useState('')
 
   const fetchUsers = async () => {
-    const response = await fetch('http://localhost:5001/volunteers')
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/volunteers`)
     const data = await response.json()
     setUsers(data)
   }
@@ -25,7 +25,7 @@ export default function Management() {
   }
 
   const newUser = async (data) => {
-    const response = await fetch('http://localhost:5001/volunteers', {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/volunteers`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
