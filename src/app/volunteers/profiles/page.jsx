@@ -10,7 +10,7 @@ export default function Profiles() {
 
   const handleClick = () => {
     localStorage.clear()
-    router.push(`http://localhost:3000`)
+    router.push(`${process.env.NEXT_PUBLIC_LOGIN}`)
   }
   return (
     <>
